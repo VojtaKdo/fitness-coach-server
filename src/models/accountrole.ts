@@ -1,6 +1,6 @@
 module.exports = (sequelize: any, Sequilaze: any) => {
     return sequelize.define(
-        "user", //Název tabulky
+        "accountrole", //Název tabulky
         {   //Z čeho se tabulka skládá
             id: {
                 type: Sequilaze.UUID,   //Universal Unique Identifier
@@ -8,21 +8,9 @@ module.exports = (sequelize: any, Sequilaze: any) => {
                 primaryKey: true,
                 allowNull: false,
             },
-            email: {
+            rolename: {
                 type: Sequilaze.STRING,
                 allowNull: false,
-            },
-            username: {
-                type: Sequilaze.STRING,
-                allowNull: false,
-            },
-            password: {
-                type: Sequilaze.STRING,
-                allowNull: false,
-            },
-            verified: {
-                type: Sequilaze.BOOLEAN,
-                defaultValue: 0,
             },
             createdAt: {
                 type: Sequilaze.DATE,

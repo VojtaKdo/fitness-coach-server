@@ -16,11 +16,19 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 let db = {
     Sequelize,
     sequelize,
-    users: require("./user")(sequelize, Sequelize)  //tabulka
+    users: require("./user")(sequelize, Sequelize),  //tabulka
+    accountRoles: require("./accountrole")(sequelize, Sequelize),  //tabulka
+    userAccountRuoles: require("./useraccountroles")(sequelize, Sequelize),  //tabulka
 };
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-db.users = require("./user")(sequelize, Sequelize);
+db.userAccountRuoles.belongsTo(db.users, {
+    foreignKey: "userid",
+    onDelete: "cascade",
+})
+
+db.userAccountRuoles.belongsTo(db.accountRoles, {
+    foreignKey: "accountroleid",
+    onDelete: "cascade",
+})
 
 export default db;
