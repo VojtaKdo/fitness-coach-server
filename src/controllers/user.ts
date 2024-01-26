@@ -3,15 +3,19 @@ import db from "../models/index";
 import { genSalt, hash } from "bcrypt";
 
 const User = db.users;
+const AccountRole = db.accountRole;
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.findAll();
     if (!users || users.length == 0)
       return res.status(500).send({ msg: "Users not found" });
+    const ownerRole = await AccountRole.findOne({ where: { name: "owner" }});
+    const ownerAccounts = await ownerRole.getUser();
     return res.status(200).send({
       msg: "Users found!",
       payload: users,
+      ownerAccounts
     });
   } catch (error) {
     console.log(error);
@@ -48,6 +52,7 @@ export const createUser = async (req: Request, res: Response) => {
     });
     if (!createdUser)
       return res.status(500).send({ msg: "Something went wrong" });
+    await createdUser.addUserRole("Owner");
     return res.status(201).send({ msg: "User created", payload: createdUser });
   } catch (error) {
     console.log(error);
