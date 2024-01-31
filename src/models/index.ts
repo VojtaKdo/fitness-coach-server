@@ -19,6 +19,7 @@ let db = {
     users: require("./user")(sequelize, Sequelize),  //tabulka
     accountRole: require("./accountrole")(sequelize, Sequelize),  //tabulka
     userAccountRoles: require("./useraccountroles")(sequelize, Sequelize),  //tabulka
+    friends: require("./friends")(sequelize, Sequelize),  //tabulka
 };
 
 db.users.belongsToMany(db.accountRole, {

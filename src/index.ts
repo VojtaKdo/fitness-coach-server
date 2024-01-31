@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 db.sequelize.sync({ force: false, alter: false })  //forcene změnu i když ztratí data a alter se bude snažit ty data zachovat
 
 app.use(`/api/v${process.env.API_VER}/user`, require("./routes/user"));
+app.use(`/api/v${process.env.API_VER}/friends`, require("./routes/friends"));
 
 app.listen(PORT, () => {
     console.log(`App is running on ${PORT}`)
