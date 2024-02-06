@@ -1,6 +1,6 @@
 module.exports = (sequelize: any, Sequilaze: any) => {
     return sequelize.define(
-        "accountrole", //Název tabulky
+        "exercises_categories", //Název tabulky
         {   //Z čeho se tabulka skládá
             name: {
                 type: Sequilaze.STRING,

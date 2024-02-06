@@ -1,11 +1,14 @@
 module.exports = (sequelize: any, Sequilaze: any) => {
     return sequelize.define(
-        "accountrole", //Název tabulky
+        "user_achievements", //Název tabulky
         {   //Z čeho se tabulka skládá
-            id: {
-                type: Sequilaze.STRING,
+            achievement_id: {
+                type: Sequilaze.INTEGER,
                 allowNull: false,
-                primaryKey: true,
+            },
+            user_id: {
+                type: Sequilaze.INTEGER,
+                allowNull: false,
             },
             createdAt: {
                 type: Sequilaze.DATE,

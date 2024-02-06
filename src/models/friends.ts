@@ -1,8 +1,8 @@
 module.exports = (sequelize: any, Sequilaze: any) => {
     return sequelize.define(
-        "accountrole", //Název tabulky
+        "friends", //Název tabulky
         {   //Z čeho se tabulka skládá
-            friendID: {
+            id: {
                 type: Sequilaze.UUID,   //Universal Unique Identifier
                 defaultValue: Sequilaze.UUIDV4,
                 primaryKey: true,
@@ -11,7 +11,6 @@ module.exports = (sequelize: any, Sequilaze: any) => {
             name: {
                 type: Sequilaze.STRING,
                 allowNull: false,
-                primaryKey: true,
             },
             createdAt: {
                 type: Sequilaze.DATE,
