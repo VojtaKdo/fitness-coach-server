@@ -8,6 +8,14 @@ module.exports = (sequelize: any, Sequilaze: any) => {
                 primaryKey: true,
                 allowNull: false,
             },
+            name: {
+                type: Sequilaze.STRING,
+                allowNull: false,
+            },
+            surname: {
+                type: Sequilaze.STRING,
+                allowNull: false,
+            },
             email: {
                 type: Sequilaze.STRING,
                 allowNull: false,
@@ -19,6 +27,26 @@ module.exports = (sequelize: any, Sequilaze: any) => {
             password: {
                 type: Sequilaze.STRING,
                 allowNull: false,
+            },
+            dateOfBirth: {
+                type: Sequilaze.DATE,
+                allowNull: true,
+            },
+            weight: {
+                type: Sequilaze.INTEGER,
+                allowNull: false,
+            },
+            height: {
+                type: Sequilaze.INTEGER,
+                allowNull: false,
+            },
+            bannerImagePath: {
+                type: Sequilaze.STRING,
+                allowNull: true,
+            },
+            profileImagePath: {
+                type: Sequilaze.STRING,
+                allowNull: true,
             },
             verified: {
                 type: Sequilaze.BOOLEAN,

@@ -1,5 +1,5 @@
 module.exports = (sequelize: any, Sequilaze: any) => {
-    return sequelize.define(
+    const AccountRole = sequelize.define(
         "accountrole", //Název tabulky
         {   //Z čeho se tabulka skládá
             name: {
@@ -18,4 +18,5 @@ module.exports = (sequelize: any, Sequilaze: any) => {
             timestamps: true,
         }
     )
+    return AccountRole;
 }

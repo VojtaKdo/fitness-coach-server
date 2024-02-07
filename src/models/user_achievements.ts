@@ -2,12 +2,10 @@ module.exports = (sequelize: any, Sequilaze: any) => {
     return sequelize.define(
         "user_achievements", //Název tabulky
         {   //Z čeho se tabulka skládá
-            achievement_id: {
-                type: Sequilaze.INTEGER,
-                allowNull: false,
-            },
-            user_id: {
-                type: Sequilaze.INTEGER,
+            id: {
+                type: Sequilaze.UUID,   //Universal Unique Identifier
+                defaultValue: Sequilaze.UUIDV4,
+                primaryKey: true,
                 allowNull: false,
             },
             createdAt: {

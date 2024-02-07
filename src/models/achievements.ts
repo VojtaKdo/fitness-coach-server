@@ -12,6 +12,18 @@ module.exports = (sequelize: any, Sequilaze: any) => {
                 type: Sequilaze.STRING,
                 allowNull: false,
             },
+            progress: {
+                type: Sequilaze.STRING,
+                allowNull: false,
+            },
+            isCompleted: {
+                type: Sequilaze.BOOLEAN,
+                defaultValue: 0,
+            },
+            badgeImagePath: {
+                type: Sequilaze.STRING,
+                allowNull: true,  
+            },
             createdAt: {
                 type: Sequilaze.DATE,
             },

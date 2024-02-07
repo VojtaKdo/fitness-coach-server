@@ -38,17 +38,21 @@ export const getUserById = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const { email, username, password } = req.body;
-    if (!email || !username || !password)
+    const { email, username, password, name, surname, weight, height } = req.body;
+    if (!email || !username || !password || !name || !surname || !weight || !height)
       return res.status(400).send({ msg: "Missing details!" });
     const user = await User.findOne({ where: { email: email } });
     if (user) return res.status(400).send({ msg: "User already exists!" });
     const salt = await genSalt(10);
     const passwordHash = await hash(password, salt);
     const createdUser = await User.create({
-      email: email,
+      name: name,
+      surname: surname,
       username: username,
+      email: email,
       password: passwordHash,
+      weight: weight,
+      height: height,
     });
     if (!createdUser)
       return res.status(500).send({ msg: "Something went wrong" });

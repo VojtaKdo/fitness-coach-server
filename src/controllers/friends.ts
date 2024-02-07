@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import db from "../models/index";
 import { genSalt, hash } from "bcrypt";
 
-const Friend = db.friends;
+const Friend = db.friendList;
 
 export const getAllFriends = async (req: Request, res: Response) => {
   try {
