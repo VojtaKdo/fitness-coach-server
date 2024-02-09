@@ -16,6 +16,11 @@ db.sequelize.sync({ force: true, alter: true })  //forcene změnu i když ztrat�
 app.use(`/api/v${process.env.API_VER}/user`, require("./routes/user"));
 app.use(`/api/v${process.env.API_VER}/friendList`, require("./routes/friendList"));
 app.use(`/api/v${process.env.API_VER}/achievements`, require("./routes/achievements"));
+app.use(`/api/v${process.env.API_VER}/meals`, require("./routes/meals"));
+app.use(`/api/v${process.env.API_VER}/food`, require("./routes/food"));
+app.use(`/api/v${process.env.API_VER}/exercises`, require("./routes/exercises"));
+app.use(`/api/v${process.env.API_VER}/plans`, require("./routes/plans"));
+app.use(`/api/v${process.env.API_VER}/exercise_categories`, require("./routes/exercise_categories"));
 
 app.listen(PORT, () => {
     console.log(`App is running on ${PORT}`)

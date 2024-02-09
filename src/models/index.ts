@@ -22,6 +22,15 @@ let db = {
   friendList: require("./friendlist")(sequelize, Sequelize), //tabulka
   achievements: require("./achievements")(sequelize, Sequelize), //tabulka
   userAchievements: require("./user_achievements")(sequelize, Sequelize), //tabulka
+  meals: require("./meals")(sequelize, Sequelize), //tabulka
+  food: require("./food")(sequelize, Sequelize), //tabulka
+  mealsFood: require("./meals_food")(sequelize, Sequelize), //tabulka
+  plans: require("./plans")(sequelize, Sequelize), //tabulka
+  exercises: require("./exercises")(sequelize, Sequelize), //tabulka
+  exerciseCategories: require("./exercise_categories")(sequelize, Sequelize), //tabulka
+  plansExercises: require("./exercise_categories")(sequelize, Sequelize), //tabulka
+  exerciseCategoriesRecords: require("./exercise_categories_records")(sequelize, Sequelize), //tabulka
+  planExercises: require("./plan_exercises")(sequelize, Sequelize), //tabulka
 };
 
 db.users.belongsToMany(db.accountRole, {
@@ -43,6 +52,11 @@ db.users.belongsToMany(db.achievements, {
   through: db.userAchievements,
   as: "achievement",
 });
+
+db.meals.belongsToMany(db.food, {
+  through: db.mealsFood,
+  as: "mealsFood"
+})
 
 /*
 db.userAccountRuoles.belongsTo(db.users, {

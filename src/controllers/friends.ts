@@ -8,7 +8,7 @@ export const getAllFriends = async (req: Request, res: Response) => {
   try {
     const friend = await Friend.findAll();
     if (!friend || friend.length == 0)
-      return res.status(500).send({ msg: "Users not found" });
+      return res.status(500).send({ msg: "Friends not found" });
     return res.status(200).send({
       msg: "Friends found!",
       payload: friend,
