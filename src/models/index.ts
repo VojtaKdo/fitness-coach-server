@@ -28,9 +28,9 @@ let db = {
   plans: require("./plans")(sequelize, Sequelize), //tabulka
   exercises: require("./exercises")(sequelize, Sequelize), //tabulka
   exerciseCategories: require("./exercise_categories")(sequelize, Sequelize), //tabulka
-  plansExercises: require("./exercise_categories")(sequelize, Sequelize), //tabulka
-  exerciseCategoriesRecords: require("./exercise_categories_records")(sequelize, Sequelize), //tabulka
+  exCatRec: require("./exercise_cat_records")(sequelize, Sequelize), //tabulka
   planExercises: require("./plan_exercises")(sequelize, Sequelize), //tabulka
+  timeTable: require("./timetable")(sequelize, Sequelize), //tabulka
 };
 
 db.users.belongsToMany(db.accountRole, {
@@ -56,6 +56,21 @@ db.users.belongsToMany(db.achievements, {
 db.meals.belongsToMany(db.food, {
   through: db.mealsFood,
   as: "mealsFood"
+})
+
+db.plans.belongsToMany(db.exercises, {
+  through: db.planExercises,
+  as: "exercise"
+})
+
+db.exerciseCategories.belongsToMany(db.exercises, {
+  through: db.exCatRec,
+  as: "category"
+})
+
+db.timeTable.belongsTo(db.users, {
+  foreignKey: "userid",
+  onDelete: "cascade",
 })
 
 /*

@@ -1,6 +1,6 @@
 module.exports = (sequelize: any, Sequilaze: any) => {
     return sequelize.define(
-        "exercise_categories_records", //Název tabulky
+        "exercise_cat_records", //Název tabulky
         {   //Z čeho se tabulka skládá
             id: {
                 type: Sequilaze.UUID,   //Universal Unique Identifier

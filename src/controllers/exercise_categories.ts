@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import db from "../models/index";
 import { genSalt, hash } from "bcrypt";
 
-const ExerciseCategories = db.exercises;
+const ExerciseCategories = db.exerciseCategories;
 
 export const getAllExerciseCategories = async (req: Request, res: Response) => {
   try {
