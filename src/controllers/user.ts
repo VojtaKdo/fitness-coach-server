@@ -56,7 +56,7 @@ export const createUser = async (req: Request, res: Response) => {
     });
     if (!createdUser)
       return res.status(500).send({ msg: "Something went wrong" });
-    await createdUser.addUserRole("Owner");
+    await createdUser.addUserRole("user");
     return res.status(201).send({ msg: "User created", payload: createdUser });
   } catch (error) {
     console.log(error);

@@ -1,22 +1,22 @@
-module.exports = (sequelize: any, Sequilaze: any) => {
+module.exports = (sequelize: any, Sequelaze: any) => {
     return sequelize.define(
         "timetable", //Název tabulky
         {   //Z čeho se tabulka skládá
             id: {
-                type: Sequilaze.UUID,   //Universal Unique Identifier
-                defaultValue: Sequilaze.UUIDV4,
+                type: Sequelaze.UUID,   //Universal Unique Identifier
+                defaultValue: Sequelaze.UUIDV4,
                 primaryKey: true,
                 allowNull: false,
             },
             table: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: true,
             },
             createdAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
             updatedAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
         },
         {

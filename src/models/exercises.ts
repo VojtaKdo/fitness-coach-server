@@ -1,34 +1,34 @@
-module.exports = (sequelize: any, Sequilaze: any) => {
+module.exports = (sequelize: any, Sequelaze: any) => {
     return sequelize.define(
         "exercises", //Název tabulky
         {   //Z čeho se tabulka skládá
             id: {
-                type: Sequilaze.UUID,   //Universal Unique Identifier
-                defaultValue: Sequilaze.UUIDV4,
+                type: Sequelaze.UUID,   //Universal Unique Identifier
+                defaultValue: Sequelaze.UUIDV4,
                 primaryKey: true,
                 allowNull: false,
             },
             name: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             videoPath: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             description: {
-                type: Sequilaze.TEXT,
+                type: Sequelaze.TEXT,
                 allowNull: false,
             },
             smallDescription: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             createdAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
             updatedAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
         },
         {

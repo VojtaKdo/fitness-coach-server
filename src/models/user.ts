@@ -1,62 +1,62 @@
-module.exports = (sequelize: any, Sequilaze: any) => {
+module.exports = (sequelize: any, Sequelaze: any) => {
     return sequelize.define(
         "user", //Název tabulky
         {   //Z čeho se tabulka skládá
             id: {
-                type: Sequilaze.UUID,   //Universal Unique Identifier
-                defaultValue: Sequilaze.UUIDV4,
+                type: Sequelaze.UUID,   //Universal Unique Identifier
+                defaultValue: Sequelaze.UUIDV4,
                 primaryKey: true,
                 allowNull: false,
             },
             name: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             surname: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             email: {
-                type: Sequilaze.STRING,
-                allowNull: false,
-            },
-            username: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             password: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             dateOfBirth: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
                 allowNull: true,
             },
             weight: {
-                type: Sequilaze.INTEGER,
-                allowNull: false,
+                type: Sequelaze.FLOAT,
+                allowNull: true,
             },
             height: {
-                type: Sequilaze.INTEGER,
-                allowNull: false,
+                type: Sequelaze.FLOAT,
+                allowNull: true,
             },
             bannerImagePath: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: true,
             },
             profileImagePath: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
+                allowNull: true,
+            },
+            stats: {
+                type: Sequelaze.STRING,
                 allowNull: true,
             },
             verified: {
-                type: Sequilaze.BOOLEAN,
+                type: Sequelaze.BOOLEAN,
                 defaultValue: 0,
             },
             createdAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
             updatedAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
         },
         {

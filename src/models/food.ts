@@ -1,54 +1,54 @@
-module.exports = (sequelize: any, Sequilaze: any) => {
+module.exports = (sequelize: any, Sequelaze: any) => {
     return sequelize.define(
         "food", //Název tabulky
         {   //Z čeho se tabulka skládá
             id: {
-                type: Sequilaze.UUID,   //Universal Unique Identifier
-                defaultValue: Sequilaze.UUIDV4,
+                type: Sequelaze.UUID,   //Universal Unique Identifier
+                defaultValue: Sequelaze.UUIDV4,
                 primaryKey: true,
                 allowNull: false,
             },
             name: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
             },
             calories: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             carbs: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             fats: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             fibers: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             sugar: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             salt: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             weight: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: false,
             },
             pictureImagePath: {
-                type: Sequilaze.INTEGER,
+                type: Sequelaze.INTEGER,
                 allowNull: true,
             },
             createdAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
             updatedAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
         },
         {

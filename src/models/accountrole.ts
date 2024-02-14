@@ -1,17 +1,17 @@
-module.exports = (sequelize: any, Sequilaze: any) => {
+module.exports = (sequelize: any, Sequelaze: any) => {
     const AccountRole = sequelize.define(
         "accountrole", //Název tabulky
         {   //Z čeho se tabulka skládá
             name: {
-                type: Sequilaze.STRING,
+                type: Sequelaze.STRING,
                 allowNull: false,
                 primaryKey: true,
             },
             createdAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
             updatedAt: {
-                type: Sequilaze.DATE,
+                type: Sequelaze.DATE,
             },
         },
         {
