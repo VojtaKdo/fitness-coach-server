@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import db from "../models/index";
-import { genSalt, hash } from "bcrypt";
+import { genSalt, hash, compare } from "bcrypt";
 
 const User = db.users;
 const AccountRole = db.accountRole;
@@ -36,10 +36,26 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
+export const loginUser = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) return res.status(400).send({ msg: "Missing details!" });
+    const user = await User.findOne({ where: { email: email } });
+    if (!user) return res.status(404).send({ msg: "User not found" });
+    const logged = await compare(password, user.password);
+    if(logged) return res.status(200).send({msg: "User logged in!"});
+    else return res.status(200).send({msg: "Wrong pasword or email!"});
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+};
+
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const { email, username, password, name, surname, weight, height } = req.body;
-    if (!email || !username || !password || !name || !surname || !weight || !height)
+    const { email, name, surname, password } = req.body;
+    console.log(req.body);
+    if (!email || !password || !name || !surname)
       return res.status(400).send({ msg: "Missing details!" });
     const user = await User.findOne({ where: { email: email } });
     if (user) return res.status(400).send({ msg: "User already exists!" });
@@ -48,11 +64,8 @@ export const createUser = async (req: Request, res: Response) => {
     const createdUser = await User.create({
       name: name,
       surname: surname,
-      username: username,
       email: email,
       password: passwordHash,
-      weight: weight,
-      height: height,
     });
     if (!createdUser)
       return res.status(500).send({ msg: "Something went wrong" });
