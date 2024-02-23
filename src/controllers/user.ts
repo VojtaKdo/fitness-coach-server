@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import db from "../models/index";
 import { genSalt, hash, compare } from "bcrypt";
 
@@ -36,15 +36,21 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).send({ msg: "Missing details!" });
     const user = await User.findOne({ where: { email: email } });
     if (!user) return res.status(404).send({ msg: "User not found" });
     const logged = await compare(password, user.password);
-    if(logged) return res.status(200).send({msg: "User logged in!"});
-    else return res.status(200).send({msg: "Wrong pasword or email!"});
+
+    if(logged){
+      res.locals.email = email;
+      next();
+    }
+
+    else return res.status(404).send({msg: "Wrong pasword or email!"});
+
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
