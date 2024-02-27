@@ -3,11 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();    //načte .env soubor do process.env
 //zavoláme process.env.PORT
 import cors = require("cors");
+import cookieparser from "cookie-parser";
 import db from "./models/index";
 
 const app = express();
 app.use(express.json());    //aplikaci komunikuje přes JSON
 app.use(cors());
+app.use(cookieparser());
 
 const PORT = process.env.PORT || 3000;
 
@@ -34,6 +36,7 @@ app.use(`/api/v${process.env.API_VER}/food`, require("./routes/food"));
 app.use(`/api/v${process.env.API_VER}/exercises`, require("./routes/exercises"));
 app.use(`/api/v${process.env.API_VER}/plans`, require("./routes/plans"));
 app.use(`/api/v${process.env.API_VER}/exercise_categories`, require("./routes/exercise_categories"));
+app.use(`/api/v${process.env.API_VER}/admin`, require("./routes/admin"));
 
 app.listen(PORT, () => {
     console.log(`App is running on ${PORT}`)
