@@ -4,11 +4,13 @@ const router = express.Router();
 
 import * as friendController from "../controllers/friends";
 
-router.get("/", friendController.getAllFriends);
+import { verify, auth } from "../services/auth";
 
-router.get("/:id", friendController.getFriendById);
+router.get("/", verify, friendController.getAllFriends);
 
-router.delete("/:id", friendController.deleteFriend);
+router.get("/:id", verify, friendController.getFriendById);
+
+router.delete("/:id", verify, friendController.deleteFriend);
 
 
 module.exports = router;

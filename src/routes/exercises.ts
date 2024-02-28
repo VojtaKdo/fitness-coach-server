@@ -2,17 +2,19 @@ import express from "express";
 
 const router = express.Router();
 
+import { verify, auth } from "../services/auth";
+
 import * as exercisesController from "../controllers/exercises";
 
-router.get("/", exercisesController.getAllExercises);
+router.get("/", verify, exercisesController.getAllExercises);
 
-router.get("/:id", exercisesController.getExerciseById);
+router.get("/:id", verify, exercisesController.getExerciseById);
 
-router.post("/", exercisesController.createExercise);
+router.post("/", verify, auth(["admin"]), exercisesController.createExercise);
 
-router.put("/:id", exercisesController.updateExercise);
+router.put("/:id", verify, auth(["admin"]), exercisesController.updateExercise);
 
-router.delete("/:id", exercisesController.deleteExercise);
+router.delete("/:id", verify, auth(["admin"]), exercisesController.deleteExercise);
 
 
 module.exports = router;

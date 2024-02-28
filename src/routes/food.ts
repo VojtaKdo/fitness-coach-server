@@ -4,15 +4,17 @@ const router = express.Router();
 
 import * as foodController from "../controllers/food";
 
-router.get("/", foodController.getAllFood);
+import { verify, auth } from "../services/auth";
 
-router.get("/:id", foodController.getFoodById);
+router.get("/", verify, foodController.getAllFood);
 
-router.post("/", foodController.createFood);
+router.get("/:id", verify, foodController.getFoodById);
 
-router.put("/:id", foodController.updateFood);
+router.post("/", verify, auth(["admin"]), foodController.createFood);
 
-router.delete("/:id", foodController.deleteFood);
+router.put("/:id", verify, auth(["admin"]), foodController.updateFood);
+
+router.delete("/:id", verify, auth(["admin"]), foodController.deleteFood);
 
 
 module.exports = router;

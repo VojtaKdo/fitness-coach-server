@@ -1,18 +1,20 @@
 import express from "express";
 
+import { verify, auth } from "../services/auth";
+
 const router = express.Router();
 
 import * as achievementController from "../controllers/achievements";
 
-router.get("/", achievementController.getAllAchievements);
+router.get("/", verify, achievementController.getAllAchievements);
 
-router.get("/:id", achievementController.getAchievementById);
+router.get("/:id",verify, achievementController.getAchievementById);
 
-router.post("/", achievementController.createAchievement);
+router.post("/",verify, auth(["admin"]), achievementController.createAchievement);
 
-router.put("/:id", achievementController.updateAchievement);
+router.put("/:id",verify, auth(["admin"]), achievementController.updateAchievement);
 
-router.delete("/:id", achievementController.deleteAchievement);
+router.delete("/:id",verify, auth(["admin"]), achievementController.deleteAchievement);
 
 
 module.exports = router;

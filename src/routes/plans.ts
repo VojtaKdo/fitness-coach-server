@@ -4,15 +4,17 @@ const router = express.Router();
 
 import * as plansController from "../controllers/plans";
 
-router.get("/", plansController.getAllPlans);
+import { verify, auth } from "../services/auth";
 
-router.get("/:id", plansController.getPlanById);
+router.get("/", verify, plansController.getAllPlans);
 
-router.post("/", plansController.createPlan);
+router.get("/:id", verify, plansController.getPlanById);
 
-router.put("/:id", plansController.updatePlan);
+router.post("/", verify, plansController.createPlan);
 
-router.delete("/:id", plansController.deletePlan);
+router.put("/:id", verify, plansController.updatePlan);
+
+router.delete("/:id", verify, plansController.deletePlan);
 
 
 module.exports = router;

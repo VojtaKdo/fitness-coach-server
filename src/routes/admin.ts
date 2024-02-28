@@ -3,9 +3,9 @@ import express from "express";
 const router = express.Router();
 
 import * as adminController from "../controllers/admin";
-import { verify } from "../services/auth";
+import { verify, auth } from "../services/auth";
 
-router.get("/dashboard", verify, adminController.getDashboard);
+router.get("/dashboard", verify, auth(["admin"]), adminController.getDashboard);
 
 
 module.exports = router;

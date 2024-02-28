@@ -21,9 +21,6 @@ db.sequelize.sync({ force: true, alter: true }).then(async () =>{
     {
         name: "admin",
     },
-    {
-        name: "role",
-    },
 ]
     await db.accountRole.bulkCreate(userRolesData);
 });  //forcene změnu i když ztratí data a alter se bude snažit ty data zachovat
