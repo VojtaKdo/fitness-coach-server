@@ -69,7 +69,6 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
 };
 
 export const createUser = async (req: Request, res: Response) => {
-  console.log(AccountRole);
   try {
     const { email, name, surname, password } = req.body;
     console.log(req.body);
@@ -90,13 +89,11 @@ export const createUser = async (req: Request, res: Response) => {
     await createdUser.addUserRole("user");
     await createdUser.addUserRole("admin");
     await createdUser.addUserRole("verified");
-    console.log(AccountRole);
     return res.status(201).send({ msg: "User created", payload: createdUser });
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
   }
-  console.log(AccountRole);
 };
 
 export const updateUser = async (req: Request, res: Response) => {

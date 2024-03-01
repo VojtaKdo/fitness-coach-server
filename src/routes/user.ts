@@ -13,7 +13,7 @@ router.post("/", userController.createUser);
 
 router.post("/login", userController.loginUser, login);
 
-router.post("/refresh", verify, refresh)
+router.post("/refresh", refresh)
 
 router.put("/:id", verify, userController.updateUser);
 
