@@ -10,11 +10,11 @@ router.get("/", verify, exercisesController.getAllExercises);
 
 router.get("/:id", verify, exercisesController.getExerciseById);
 
-router.post("/", verify, auth(["admin"]), exercisesController.createExercise);
+router.post("/", verify, auth(["admin", "verified"]), exercisesController.createExercise);
 
-router.put("/:id", verify, auth(["admin"]), exercisesController.updateExercise);
+router.put("/:id", verify, auth(["admin", "verified"]), exercisesController.updateExercise);
 
-router.delete("/:id", verify, auth(["admin"]), exercisesController.deleteExercise);
+router.delete("/:id", verify, auth(["admin", "verified"]), exercisesController.deleteExercise);
 
 
 module.exports = router;

@@ -10,11 +10,11 @@ router.get("/", verify, mealsController.getAllMeals);
 
 router.get("/:id", verify, mealsController.getMealById);
 
-router.post("/", verify, auth(["admin"]), mealsController.createMeal);
+router.post("/", verify, auth(["admin", "verified"]), mealsController.createMeal);
 
-router.put("/:id", auth(["admin"]), mealsController.updateMeal);
+router.put("/:id", auth(["admin", "verified"]), mealsController.updateMeal);
 
-router.delete("/:id", auth(["admin"]), mealsController.deleteMeal);
+router.delete("/:id", auth(["admin", "verified"]), mealsController.deleteMeal);
 
 
 module.exports = router;
